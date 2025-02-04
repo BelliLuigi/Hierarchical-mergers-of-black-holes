@@ -1,3 +1,2 @@
-*.txt
-*.tgz
-*_noclusterrevolv/
+.ipynb_checkpoints/
+data/
