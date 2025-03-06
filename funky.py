@@ -14,5 +14,8 @@ def extractor(cluster, path_data='data/', dyn='Dyn/'):
                       names=['ID', 'M1', 'M2', 'S1', 'S2', 't_pair', 't_elapsed','kick','Mrem', 'Srem', 'esca_v', 'Mcluster', 'gen'])
         dfz = dfz[dfz['t_elapsed'] != 136000]
         dfz['Z'] = float(z)
+        dfz['ID'] = dfz['ID'] + dfz['Z']
         holder.append(dfz)
-    return concat(holder, ignore_index=True)
+    df = concat(holder, ignore_index=True)
+    df['gen_max'] = df.groupby('ID')['gen'].transform('max')
+    return df
