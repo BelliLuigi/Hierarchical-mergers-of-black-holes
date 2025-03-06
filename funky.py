@@ -92,6 +92,5 @@ def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', '
     plt.colorbar(label='Covariance')#, ticks=np.arange(-0.99,1.01,0.25), boundaries=np.linspace(-1,1.01,200))#, boundaries=np.linspace(-1,1,2000))
     cluster = cluster.upper()
     plt.title(f'Covariance Matrix for {cluster}')
-    plt.xticks(ticks=np.arange(len(heade)), labels=heade, rotation=90)
+    plt.xticks(ticks=np.arange(len(heade)), labels=heade, rotation=50)
     plt.yticks(ticks=np.arange(len(heade)), labels=heade)
-    plt.show()
