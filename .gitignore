@@ -1,2 +1,7 @@
 .ipynb_checkpoints/
 data/
+__pycache__/
+.virtual_documents/
+nsc.csv
+ysc.csv
+gc.csv
