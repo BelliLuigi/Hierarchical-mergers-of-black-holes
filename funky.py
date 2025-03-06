@@ -2,6 +2,7 @@ import os
 from pandas import read_csv, concat
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+#from matplotlib.colors import TwoSlopeNorm
 import numpy as np
 
 
@@ -71,7 +72,7 @@ def normer_col(df,i): # This is a normer and it needs to the following function:
     return coso
 
 
-def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', 'M2','Mrem', 'S1', 'S2','Srem','gen', 't_pair', 't_elapsed','kick', 'esca_v', 'Mcluster','Z'] ):
+def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', 'M2','Mrem','Srem','S2','S1','gen','Z', 'kick', 't_elapsed','t_pair', 'esca_v', 'Mcluster'] ):
     #####
     # Suggested colormap w/ 3 colors to make the center 0, so uncorrelation, more visible. Like 'bwr'
     #####
@@ -82,13 +83,13 @@ def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', '
 
     # Normalize the DataFrame
     normalized_df = (df - df.mean()) / df.std()
-
+    TwoSlopeNorm = colors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
     # Compute the covariance matrix
     cov_matrix = np.cov(normalized_df.values, rowvar=False)
-
+    norm = TwoSlopeNorm
     # Plotting the covariance matrix
-    plt.imshow(cov_matrix, cmap=colormap)
-    plt.colorbar(label='Covariance')
+    plt.imshow(cov_matrix, cmap=colormap, norm = norm)
+    plt.colorbar(label='Covariance')#, ticks=np.arange(-0.99,1.01,0.25), boundaries=np.linspace(-1,1.01,200))#, boundaries=np.linspace(-1,1,2000))
     cluster = cluster.upper()
     plt.title(f'Covariance Matrix for {cluster}')
     plt.xticks(ticks=np.arange(len(heade)), labels=heade, rotation=90)
