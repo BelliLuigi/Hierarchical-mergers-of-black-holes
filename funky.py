@@ -94,3 +94,18 @@ def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', '
     plt.title(f'Covariance Matrix for {cluster}')
     plt.xticks(ticks=np.arange(len(heade)), labels=heade, rotation=50)
     plt.yticks(ticks=np.arange(len(heade)), labels=heade)
+
+    
+def hist1d(ax, x, y, z, xlimmin, xlimmax, xscale, yscale, xlabel, density,alpha=0.3):
+    ax.clear()
+    bins = 100
+    ax.hist(x, alpha=alpha, density=density, histtype='bar', bins=bins, label='ysc', zorder=3)
+    ax.hist(y, alpha=alpha, density=density, histtype='bar', bins=bins, label='gc', zorder=1)
+    ax.hist(z, alpha=alpha, density=density, histtype='bar', bins=bins, label='nsc', zorder=0)
+    ax.legend(title='Clusters', loc='upper right')
+    ax.set_xlim(xlimmin, xlimmax)
+    ax.set_xscale(xscale)
+    ax.set_yscale(yscale)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel('Frequency')
+    
