@@ -26,7 +26,7 @@ def extractor(cluster, path_data='data/', dyn='Dyn/'):  # This function gathers 
 
 
 def hist2dgraph( x,y, nxbin,nybin, title, axx, axy, vmin, vmax, scale_x='linear', scale_y = 'linear'):
-    #
+    '''
     #This Function makes a 2D histogram, binning and showing the ax scales either linear scale or log scale. This method is to prefer again a scatter plot
     # bc it shows the info of density better.
     # x = data.COL1
@@ -46,7 +46,7 @@ def hist2dgraph( x,y, nxbin,nybin, title, axx, axy, vmin, vmax, scale_x='linear'
     #
     # Something like that. Be aware that this does not work w/ graphs that have to deal w/ Z. 
     # You can furter customize the graph by adding lines after the function has been called.
-    #
+    '''
     if scale_x == 'linear':
         xbin= np.linspace(x.min(),x.max(),nxbin)
         plt.xscale('linear')
