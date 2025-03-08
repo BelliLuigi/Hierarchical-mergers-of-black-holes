@@ -73,9 +73,9 @@ def normer_col(df,i): # This is a normer and it needs to the following function:
 
 
 def fast_covariance_matrix(cluster, colormap, list_of_reordered_columns=['M1', 'M2','Mrem','Srem','S2','S1','gen','Z', 'kick', 't_elapsed','t_pair', 'esca_v', 'Mcluster'] ):
-    #####
+    '''
     # Suggested colormap w/ 3 colors to make the center 0, so uncorrelation, more visible. Like 'bwr'
-    #####
+    '''
     
     df = extractor(cluster).drop(columns='ID')
     df = df[list_of_reordered_columns]
