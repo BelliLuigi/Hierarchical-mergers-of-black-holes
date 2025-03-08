@@ -1,6 +1,7 @@
 import os
 from pandas import read_csv, concat
 
+
 def extractor(cluster, path_data='data/', dyn='Dyn/'):
     if cluster == 'gc': cluster_path = 'GC_chi01_output_noclusterevolv/'
     elif cluster == 'nsc': cluster_path = 'NSC_chi01_output_noclusterevolv/'
