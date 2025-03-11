@@ -19,18 +19,6 @@ def extractor(cluster, path_data='data/', dyn='Dyn/'):
         dfz['ID'] = dfz['ID'] + dfz['Z']
         holder.append(dfz)
     df = pd.concat(holder, ignore_index=True)
-    df['gen_max'] = df.groupby('ID')['gen'].transform('max')
+    df['max_gen'] = df.groupby('ID')['gen'].transform('max')
+    df['Escaped'] = df['esca_v'].ge(df['kick'])
     return df
-
-#def RFPlot(forest, train_feats):
-#    fig, ax = plt.subplots(1, 2, figsize=(20, 7))
-#    
-#    importances = pd.Series(forest.feature_importances_, index=list(train_feats)).sort_values(ascending=False)
-#    importances.plot.bar(yerr=np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0), capsize=3, ax=ax[0])
-#    plt.ylim(bottom=0)
-#    plt.show()
-#    
-#    forest.fit(x_train[(important_features := list(importances.index)[:2])], y_train)
-#    display = DecisionBoundaryDisplay.from_estimator(forest, x_test[important_features], response_method="predict", alpha=.5, ax=ax[1])
-#    display.ax_.scatter(x_test[important_features[0]], x_test[important_features[1]], edgecolor='k', c=y_test, lw=0.5, marker='.')
-#    plt.show()
