@@ -20,5 +20,5 @@ def extractor(cluster, path_data='data/', dyn='Dyn/'):
         holder.append(dfz)
     df = pd.concat(holder, ignore_index=True)
     df['max_gen'] = df.groupby('ID')['gen'].transform('max')
-    df['Escaped'] = df['esca_v'].ge(df['kick'])
+    df['DV'] = df['esca_v'] - df['kick']
     return df
